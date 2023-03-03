@@ -2,10 +2,10 @@ const express = require('express');
 const router = express.Router();
 
 let books = [
-  {id: 1, title: 'City of Bones', borrowed: false},
-  {id: 2, title: 'Miss Peregrines home for peculiar children', borrowed: false},
-  {id: 3, title: 'Hush Hush', borrowed: false},
-  {id: 4, title: 'The Last Wish', borrowed: false}
+  {id: 1, title: 'City of Bones', author: 'Cassandra Clare', pages: 485, borrowed: false},
+  {id: 2, title: 'Miss Peregrines home for peculiar children', author: 'Ransom Riggs', pages: 352, borrowed: false},
+  {id: 3, title: 'Hush Hush', author: 'Becca Fitzpatrick', pages: 391, borrowed: false},
+  {id: 4, title: 'The Last Wish', author: 'Andrzej Sapkowski', pages: 400, borrowed: false}
 ];
 
 /* GET users listing. */
