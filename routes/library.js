@@ -3,7 +3,7 @@ const router = express.Router();
 
 let books = [
   {id: 1, title: 'City of Bones', author: 'Cassandra Clare', pages: 485, borrowed: false},
-  {id: 2, title: 'Miss Peregrines home for peculiar children', author: 'Ransom Riggs', pages: 352, borrowed: false},
+  {id: 2, title: 'Miss Peregrines Home for Peculiar Children', author: 'Ransom Riggs', pages: 352, borrowed: false},
   {id: 3, title: 'Hush Hush', author: 'Becca Fitzpatrick', pages: 391, borrowed: false},
   {id: 4, title: 'The Last Wish', author: 'Andrzej Sapkowski', pages: 400, borrowed: false}
 ];
@@ -21,6 +21,16 @@ router.post('/borrow', function(req, res) {
   
   borrowedBook.borrowed = true;
   res.send('Book is borrowed');
+});
+
+router.post('/return', function(req, res) {
+  let bookId = req.body.bookId;
+  let borrowedBook = books.find((books) => {
+    return(bookId == books.id);
+  });
+  
+  borrowedBook.borrowed = false;
+  res.send('Book is returned');
 });
 
 router.post('/add', function(req, res) {
