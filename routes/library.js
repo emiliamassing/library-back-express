@@ -23,13 +23,22 @@ router.post('/borrow', function(req, res) {
   res.send('Book is borrowed');
 });
 
-router.post('/', function(req, res) {
+router.post('/add', function(req, res) {
   let newBook = req.body;
   newBook.id = books.length + 1;
+  newBook.borrowed = false;
 
   books.push(newBook);
 
   res.json(books);
+});
+
+router.get('/:bookId', function(req, res) {
+  let bookId = req.params.bookId;
+  console.log(bookId);
+
+  let findBook = books.find(book => book.id == bookId);
+  res.json(findBook);
 });
 
 module.exports = router;
