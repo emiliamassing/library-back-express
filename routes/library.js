@@ -13,24 +13,14 @@ router.get('/', function(req, res, next) {
   res.json(books);
 });
 
-router.post('/borrow', function(req, res) {
+router.post('/toggleAvailability', function(req, res) {
   let bookId = req.body.bookId;
   let borrowedBook = books.find((books) => {
     return(bookId == books.id);
   });
   
-  borrowedBook.borrowed = true;
+  borrowedBook.borrowed = !borrowedBook.borrowed;
   res.send('Book is borrowed');
-});
-
-router.post('/return', function(req, res) {
-  let bookId = req.body.bookId;
-  let borrowedBook = books.find((books) => {
-    return(bookId == books.id);
-  });
-  
-  borrowedBook.borrowed = false;
-  res.send('Book is returned');
 });
 
 router.post('/add', function(req, res) {
